@@ -22,7 +22,7 @@ router.delete("/:id",authorizationMiddleware(['admin']),userController.deleteUse
 
 
 // * Get courses of specific student
-router.get("/courses/:studentId",  authorizationMiddleware(['admin','student']),userController.getCourses);
+router.get("/:studentId/courses",  authorizationMiddleware(['admin','student']),userController.getCourses);
 
 //* add course
 router.put("/add/:studentId/:courseId", authorizationMiddleware(['admin']), userController.addCourse);
