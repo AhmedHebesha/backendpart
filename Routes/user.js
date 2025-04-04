@@ -28,6 +28,6 @@ router.get("/:studentId/courses",  authorizationMiddleware(['admin','student']),
 router.put("/add/:studentId/:courseId", authorizationMiddleware(['admin']), userController.addCourse);
 
 //* remove course
-router.put("/remove/:studentId/:courseId",  authorizationMiddleware(['admin']), userController.dropCourse);
+router.put("/:studentId/courses/:courseId",  authorizationMiddleware(['admin']), userController.dropCourse);
 
 module.exports = router; // ! Don't forget to export the router
