@@ -1,6 +1,6 @@
 const express = require("express");
-const courseController = require("../controller/courseController");
-const authorizationMiddleware=require('./Middleware/authorizationMiddleware')
+const courseController = require("../Controllers/courseController");
+const authorizationMiddleware=require('../middleware/authorizationMiddleware')
 const router = express.Router();
 
 // * Get all courses
@@ -17,3 +17,5 @@ router.put("/:id", authorizationMiddleware(['admin']),courseController.updateCou
 
 // * Delete one course
 router.delete("/:id",authorizationMiddleware(['admin']), courseController.deleteCourse);
+
+module.exports=router // ! Don't forget to export the router

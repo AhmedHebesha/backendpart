@@ -7,9 +7,9 @@ const cors = require("cors");
 const app = express();
 
 const courseRouter = require("./Routes/course");
-const userRouter = require("./Routes/users");
+const userRouter = require("./Routes/user");
 const authRouter = require("./Routes/auth");
-const authenticationMiddleware=require('./Middleware/authenticationMiddleware')
+const authenticationMiddleware=require('./middleware/authenticationMiddleware')
 
 require('dotenv').config();
 
@@ -50,13 +50,10 @@ const db_url = `${process.env.DB_URL}/${db_name}`; // if it gives error try to c
 
 // ! Mongoose Driver Connection
 
-const connectionOptions = {
-  useUnifiedTopology: true,
-  useNewUrlParser: true,
-};
+
 
 mongoose
-  .connect(db_url, connectionOptions)
+  .connect(db_url)
   .then(() => console.log("mongoDB connected"))
   .catch((e) => {
     console.log(e);
