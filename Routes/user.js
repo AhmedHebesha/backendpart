@@ -25,9 +25,9 @@ router.delete("/:id",authorizationMiddleware(['admin']),userController.deleteUse
 router.get("/:studentId/courses",  authorizationMiddleware(['admin','student']),userController.getCourses);
 
 //* add course
-router.put("/add/:studentId/:courseId", authorizationMiddleware(['admin']), userController.addCourse);
+router.put("/:studentId/courses/remove/:courseId", authorizationMiddleware(['admin']), userController.addCourse);
 
 //* remove course
-router.put("/:studentId/courses/:courseId",  authorizationMiddleware(['admin']), userController.dropCourse);
+router.put("/:studentId/courses/remove/:courseId",  authorizationMiddleware(['admin']), userController.dropCourse);
 
 module.exports = router; // ! Don't forget to export the router
