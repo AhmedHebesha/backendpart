@@ -10,8 +10,8 @@ router.get("/", authorizationMiddleware(['admin']),userController.getAllUsers);
 router.get('/current', authorizationMiddleware(['admin','student']), userController.getCurrentUser);
 
 // * Get a user by id
+// Place after "/current" so that "current" is not treated as an id
 router.get("/:id", authorizationMiddleware(['admin']), userController.getUser);
-
 
 // * Update a user
 
