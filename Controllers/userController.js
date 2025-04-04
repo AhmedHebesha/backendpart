@@ -7,7 +7,7 @@ const bcrypt = require("bcrypt");
 const userController = {
   register: async (req, res) => {
     try {
-      const { email, password, displayName, role } = req.body;
+      const { email, password, name, role ,age} = req.body;
 
       // Check if the user already exists
       const existingUser = await userModel.findOne({ email });
@@ -22,8 +22,9 @@ const userController = {
       const newUser = new userModel({
         email,
         password: hashedPassword,
-        displayName,
+        name,
         role,
+        age
       });
 
       // Save the user to the database
