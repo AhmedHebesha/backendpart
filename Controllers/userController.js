@@ -7,7 +7,7 @@ const bcrypt = require("bcrypt");
 const userController = {
   register: async (req, res) => {
     try {
-      const { email, password, name, role ,age} = req.body;
+      const { email, password, name, role, age } = req.body;
 
       // Check if the user already exists
       const existingUser = await userModel.findOne({ email });
@@ -24,7 +24,7 @@ const userController = {
         password: hashedPassword,
         name,
         role,
-        age
+        age,
       });
 
       // Save the user to the database
@@ -68,8 +68,8 @@ const userController = {
       return res
         .cookie("token", token, {
           expires: expiresAt,
-          withCredentials: true,
-          httpOnly: false,
+          httpOnly: true,
+          secure: true, // if not working on thunder client , remove it
           SameSite: "none",
         })
         .status(200)
