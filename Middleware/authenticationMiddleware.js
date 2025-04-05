@@ -15,7 +15,6 @@ module.exports = function authenticationMiddleware(req, res, next) {
   }
 
   jwt.verify(token, secretKey, (error, decoded) => {
-    console.log(error)
     if (error) {
       return res.status(403).json({ message: "Invalid token" });
     }
