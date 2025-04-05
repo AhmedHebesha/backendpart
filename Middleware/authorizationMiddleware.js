@@ -5,6 +5,6 @@ module.exports= function authorizationMiddleware(roles) {
       if (!roles.includes(userRole))
         return res.status(403).json("unauthorized access");
       // console.log('authormid')
-      next();zz
+      next();
     };
   }
