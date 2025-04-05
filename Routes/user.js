@@ -4,7 +4,7 @@ const authorizationMiddleware=require('../middleware/authorizationMiddleware')
 const router = express.Router();
 
 // * Get all users
-router.get("/", authorizationMiddleware(['student']),userController.getAllUsers);
+router.get("/", authorizationMiddleware(['admin']),userController.getAllUsers);
 
 // * Get current user
 router.get('/current', authorizationMiddleware(['admin','student']), userController.getCurrentUser);
