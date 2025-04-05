@@ -6,11 +6,12 @@ const router = express.Router();
 // * Get all users
 router.get("/", authorizationMiddleware(['student']),userController.getAllUsers);
 
-// * Get a user by id
-router.get("/:id", authorizationMiddleware(['admin']), userController.getUser);
-
 // * Get current user
 router.get('/current', authorizationMiddleware(['admin','student']), userController.getCurrentUser);
+
+// * Get a user by id
+// Place after "/current" so that "current" is not treated as an id
+router.get("/:id", authorizationMiddleware(['admin']), userController.getUser);
 
 // * Update a user
 
@@ -21,12 +22,12 @@ router.delete("/:id",authorizationMiddleware(['admin']),userController.deleteUse
 
 
 // * Get courses of specific student
-router.get("/courses/:studentId",  authorizationMiddleware(['admin','student']),userController.getCourses);
+router.get("/:studentId/courses",  authorizationMiddleware(['admin','student']),userController.getCourses);
 
 //* add course
-router.put("/add/:studentId/:courseId", authorizationMiddleware(['admin']), userController.addCourse);
+router.put("/:studentId/courses/add/:courseId", authorizationMiddleware(['admin']), userController.addCourse);
 
 //* remove course
-router.put("/remove/:studentId/:courseId",  authorizationMiddleware(['admin']), userController.dropCourse);
+router.put("/:studentId/courses/remove/:courseId",  authorizationMiddleware(['admin']), userController.dropCourse);
 
 module.exports = router; // ! Don't forget to export the router
