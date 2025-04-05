@@ -26,20 +26,11 @@ app.use(
   })
 );
 
-// app.use((req, res, next) => {
-//   res.setHeader("Access-Control-Allow-Origin", "*");
-//   res.setHeader("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS,HEAD");
-//   res.setHeader(
-//     "Access-Control-Expose-Headers",
-//     "*"
-//   );
 
-//   next();
-// });
 
 app.use("/api/v1", authRouter);
 app.use(authenticationMiddleware);
-app.use("/api/v1/products", courseRouter);
+app.use("/api/v1/courses", courseRouter);
 app.use("/api/v1/users", userRouter);
 
 const db_name = process.env.DB_NAME;

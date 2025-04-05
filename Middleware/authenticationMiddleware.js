@@ -3,7 +3,7 @@ const secretKey = process.env.SECRET_KEY
 
 module.exports = function authenticationMiddleware(req, res, next) {
   const cookie = req.cookies;// if not working then last option req.headers.cookie then extract token
-  
+  console.log('inside auth middleware')
   // console.log(cookie);
 
   if (!cookie) {
