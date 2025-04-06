@@ -97,6 +97,7 @@ const userController = {
   },
   updateUser: async (req, res) => {
     try {
+  
       const user = await userModel.findByIdAndUpdate(
         req.params.id,
         { name: req.body.name },
@@ -120,36 +121,9 @@ const userController = {
   getCurrentUser: (req, res) => {
     res.send(req.user);
   },
-  getCourses: async (req, res) => {
-    try {
-      const user = await userModel.findById(req.params.studentId);
-      return res.status(200).json(user.courses);
-    } catch (error) {
-      return res.status(500).json({ message: error.message });
-    }
-  },
-  addCourse: async (req, res) => {
-    try {
-      const { studentId, courseId } = req.params;
-      const user = await userModel.findById(studentId);
-      const course = await productModel.findById(courseId);
-      user.courses.push(course);
-      const newUser = await user.save(); // save here works as update
-      return res.status(201).json({ newUser, message: "added successfully" });
-    } catch (e) {
-      return res.status(400).json({ message: e.message });
-    }
-  },
-  dropCourse: async (req, res) => {
-    try {
-      const user = await userModel.findById(req.params.studentId);
-      const course = await courseModel.findById(req.params.courseId);
-      user.courses.pull(course);
-      const newUser = await user.save();
-      return res.status(201).json({ newUser, message: "droped successfully" });
-    } catch (e) {
-      return res.status(400).json({ message: e.message });
-    }
-  },
+  
 };
+
+
+
 module.exports = userController;

@@ -20,7 +20,7 @@ module.exports = function authenticationMiddleware(req, res, next) {
     }
 
     // Attach the decoded user ID to the request object for further use
-    // console.log(decoded.user)
+    //console.log(decoded.user)
     
     req.user = decoded.user;
     next();

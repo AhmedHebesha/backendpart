@@ -18,4 +18,7 @@ router.put("/:id", authorizationMiddleware(['admin']),courseController.updateCou
 // * Delete one course
 router.delete("/:id",authorizationMiddleware(['admin']), courseController.deleteCourse);
 
+
+
+
 module.exports=router // ! Don't forget to export the router

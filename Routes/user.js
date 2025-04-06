@@ -1,10 +1,13 @@
 const express = require("express");
 const userController = require("../Controllers/userController");
-const authorizationMiddleware=require('../middleware/authorizationMiddleware')
+const authorizationMiddleware=require('../middleware/authorizationMiddleware');
+const courseController = require("../Controllers/courseController");
 const router = express.Router();
 
 // * Get all users
-router.get("/", authorizationMiddleware(['admin']),userController.getAllUsers);
+router.get("/", authorizationMiddleware(['student','admin']),userController.getAllUsers);
+
+
 
 // * Get current user
 router.get('/current', authorizationMiddleware(['admin','student']), userController.getCurrentUser);
@@ -22,12 +25,12 @@ router.delete("/:id",authorizationMiddleware(['admin']),userController.deleteUse
 
 
 // * Get courses of specific student
-router.get("/:studentId/courses",  authorizationMiddleware(['admin','student']),userController.getCourses);
+router.get("/:studentId/courses",  authorizationMiddleware(['admin','student']),courseController.getStudntCourses);
 
 //* add course
-router.put("/:studentId/courses/add/:courseId", authorizationMiddleware(['admin']), userController.addCourse);
+router.put("/:studentId/courses/add/:courseId", authorizationMiddleware(['admin']), courseController.addStudentCourse);
 
 //* remove course
-router.put("/:studentId/courses/remove/:courseId",  authorizationMiddleware(['admin']), userController.dropCourse);
+router.put("/:studentId/courses/remove/:courseId",  authorizationMiddleware(['admin']), courseController.dropStudentCourse);
 
 module.exports = router; // ! Don't forget to export the router

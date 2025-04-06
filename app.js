@@ -28,8 +28,12 @@ app.use(
 
 
 
+
 app.use("/api/v1", authRouter);
+
 app.use(authenticationMiddleware);
+
+
 app.use("/api/v1/courses", courseRouter);
 app.use("/api/v1/users", userRouter);
 
