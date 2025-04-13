@@ -1,6 +1,6 @@
 const express = require("express");
 const courseController = require("../Controllers/courseController");
-const authorizationMiddleware=require('../middleware/authorizationMiddleware')
+const authorizationMiddleware=require('../Middleware/authorizationMiddleware')
 const router = express.Router();
 
 // * Get all courses

@@ -1,6 +1,6 @@
 const express = require("express");
 const userController = require("../Controllers/userController");
-const authorizationMiddleware=require('../middleware/authorizationMiddleware');
+const authorizationMiddleware=require('../Middleware/authorizationMiddleware');
 const courseController = require("../Controllers/courseController");
 const router = express.Router();
 
@@ -18,7 +18,7 @@ router.get("/:id", authorizationMiddleware(['admin']), userController.getUser);
 
 // * Update a user
 
-router.put("/:id",authorizationMiddleware(['admin','student']),userController.updateUser);
+router.put("d/:id",authorizationMiddleware(['admin','student']),userController.updateUser);
 
 // * Delete a user
 router.delete("/:id",authorizationMiddleware(['admin']),userController.deleteUser);

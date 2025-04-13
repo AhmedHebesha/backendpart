@@ -9,7 +9,7 @@ const app = express();
 const courseRouter = require("./Routes/course");
 const userRouter = require("./Routes/user");
 const authRouter = require("./Routes/auth");
-const authenticationMiddleware=require('./middleware/authenticationMiddleware')
+const authenticationMiddleware=require('./Middleware/authenticationMiddleware')
 
 require('dotenv').config();
 
